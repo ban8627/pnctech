@@ -9,7 +9,6 @@ $(document).ready(function(){
   let siteMapbt = $('.site-map');
 
   let headerActive = headerHeight + 250;
-  console.log(headerActive)
   gnb.mouseenter(function(){
     headerWrap.addClass('active').css('height',headerActive);
     logo.addClass('active');
@@ -32,9 +31,43 @@ $(document).ready(function(){
     languge.removeClass('active');
     $(this).addClass('active');
     });
+
+
+    let swVisual = new Swiper(".sw-visual",{
+      loop:true,
+      slidesPerView: 1,
+      autoplay: {
+          delay: 3000,
+          disableOnInteraction: false
+      },
+      speed: 500,
+      allowTouchMove: true,
+      observer: true,
+      observeParents: true,
+      pagination: {
+        el:'.sw-visual-bullet-box',
+        type:'bullets',
+        clickable: true,
+
+      },
+      paginationClickable: true,
+      watchSlidesProgress: true,
+      navigation: {
+          nextEl: ".sw-visual-next",
+          prevEl: ".sw-visual-prev",
+      },
+    });
+
+    function swFraction(){
+      let swBullet = $('.sw-visual-bullet-box > .swiper-pagination-bullet');
+      let temp = swBullet.hasClass('swiper-pagination-bullet-active');
+      if(temp == true){
+        
+      }
+    }
 });
 
 
 window.onload = function(){
-
-};
+  
+  };
