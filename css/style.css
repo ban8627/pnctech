@@ -394,11 +394,10 @@ body {
   margin-top:-10px;
   transform: translate(-50%, -50%);
 }
-.swiper-pagination-current {
+.sw-visual-pgf-current {
   font-size: 26px;
   font-weight: 700;
 }
-
 .sw-visual-bullet-box {
   position: absolute;
   display: flex;
@@ -406,7 +405,7 @@ body {
   align-items: center;
   left:50%;
   top:50%;
-  transform: translate(-42%, -50%);
+  transform: translate(-42%, -25%);
   width:calc(100% - 250px);
   height:16px;
 }
@@ -434,7 +433,6 @@ body {
   0% {
       transform: translateX(-100%);
   }
-
   100% {
       transform: translateX(0);
   }
@@ -444,7 +442,6 @@ body {
   0% {
       transform: translateX(-100%);
   }
-
   100% {
       transform: translateX(0);
   }
@@ -454,24 +451,195 @@ body {
   animation: slide-progress 3s cubic-bezier(0.3, 0, 0.3, 1) forwards;
 }
 
-
 .control-btn {
+  display: block;
   width: 13px;
   height: 17px;
   position: absolute;
   right:0;
   top:50%;
   transform: translateY(-50%);
-  z-index: 80;
-  background-color: #fff;
+  z-index: 10;
 }
+.control-btn span {
+  display: block;
+  width:100%;
+  height:100%;
+  cursor: pointer;
+  color:#fff;
+}
+
+
 /* info */
 .info {
+  height:100vh;
+  background: url('../images/company-bg.jpg') no-repeat;
+  background-size: cover;
+}
+.info .inner {
+  height:100%;
+}
+.content-wrap {
+  position: absolute;
+  top:32%;
+  left:0;
+  width:100%;
+  height:400px;
+  padding:20px 0;
+}
+.text-wrap {
+  display: block;
+}
+.cw-desc {
+  color: #fff;
+  font-weight: 600;
+  font-size: 22px;
+}
+.cw-title {
+  color: #fff;
+  font-weight: bold;
+  font-size: 54px;
+  margin-top: 35px;
+}
+.contents {
+  display: block;
+  width:100%;
+  margin-top:30px;
+}
+.contents ul { float:right;}
+.contents ul li {
+  position: relative;
+  display: inline-block;
+  width:240px;
+  height:200px;
+  border:1px solid #fff;
+  padding: 30px;
+  box-sizing: border-box;
+  border: 2px solid white;
+  margin-left: 30px;
+  border-radius: 0px 20px 0px 20px;
+  transition: 0.3s;
+}
+.contents ul li:hover {
+  background-color: rgba(0, 163, 228, 0.8);
+  border-color:transparent;
+}
+.contents ul li a {
+  display: block;
+  width:100%;
+  background: url('../images/arrow.svg') no-repeat right center;
+  background-size: 30px 16px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+}
+.contents ul li span {
+  cursor: pointer;
+}
+.contents ul li span img {
+  width: 54px;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
+
+/* growing */
+.growing {
+  position: relative;
   width:100%;
   height:100vh;
 }
-/* growing */
-
+.growing .inner {
+  height:100%;
+  border-left:1px solid #eee;
+  border-right:1px solid #eee;
+}
+.growing-title {
+  position: absolute;
+  left:50%;
+  top: calc(40% - 140px);
+  transform: translateX(-50%);
+  color: #000;
+  font-weight: 700;
+  font-size: 34px;
+}
+.growing .inner ul {
+  display: block;
+  width:100%;
+  height:100%;
+}
+.growing .inner ul li {
+  position: relative;
+  display: inline-block;
+  margin-left:-4px;
+  width:25%;
+  height:100%;
+  text-align: center;
+  border-right:1px solid #eee;
+}
+.growing .inner ul li:last-child {
+  border-right:0;
+}
+.g-contents {
+  position: absolute;
+  top:40%;
+  left:50%;
+  display: block;
+  width:100%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.g-subtitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 30px;
+}
+.g-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  background-color: #f2f2f2;
+  border-radius: 50%;
+}
+.g-icon img {
+  height:31px;
+}
+.g-value {
+  display: block;
+  font-size: 52px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 10px;
+}
+.g-value-base {
+  position: relative;
+  font-weight: 700;
+  color: #222;
+}
+.g-value-base::after {
+  position: absolute;
+  left:50%;
+  bottom:-30px;
+  transform: translateX(-50%);
+  display: block;
+  content: '';
+  width: 30px;
+  height: 2px;
+  background-color: #00a3e4;
+}
+.g-desc {
+  margin-top:60px;
+  line-height:1.5;
+}
+.g-desc b {
+  font-weight: 600;
+  margin-right: 20px;
+}
 /* news */
 
 /* community */

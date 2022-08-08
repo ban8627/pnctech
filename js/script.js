@@ -32,41 +32,72 @@ $(document).ready(function(){
     $(this).addClass('active');
     });
 
-
-    let swVisual = new Swiper(".sw-visual",{
-      loop:true,
-      slidesPerView: 1,
-      autoplay: {
-          delay: 3000,
-          disableOnInteraction: false
-      },
-      speed: 500,
-      allowTouchMove: true,
-      observer: true,
-      observeParents: true,
-      pagination: {
-        el:'.sw-visual-bullet-box',
-        type:'bullets',
-        clickable: true,
-
-      },
-      paginationClickable: true,
-      watchSlidesProgress: true,
-      navigation: {
-          nextEl: ".sw-visual-next",
-          prevEl: ".sw-visual-prev",
-      },
-    });
-
-    function swFraction(){
-      let swBullet = $('.sw-visual-bullet-box > .swiper-pagination-bullet');
-      let temp = swBullet.hasClass('swiper-pagination-bullet-active');
-      if(temp == true){
-        
+  // visual slide
+  let swVisual = new Swiper(".sw-visual",{
+    loop:true,
+    autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+    },
+    pagination: {
+      el:'.sw-visual-bullet-box',
+      type:'bullets',
+      clickable: true,
+    },
+    navigation: {
+        nextEl: ".sw-visual-next",
+        prevEl: ".sw-visual-prev",
+    },
+    on: {      
+      slideChange: function () {
+        let aBullet = this.realIndex + 1;
+        let slideTotal = $('.sw-visual-bullet-box > span').length;
+        let swFrac = $('.sw-visual-pgf');
+        if(slideTotal == 0){
+          slideTotal = 5;
+          swFrac.html( "<span class='sw-visual-pgf-current'>" + aBullet + "</span>" + '/' + slideTotal );
+        }else{
+          swFrac.html( "<span class='sw-visual-pgf-current'>" + aBullet + "</span>" + '/' + slideTotal );
+        }
       }
-    }
-});
+    },
+    observer: true,
+    observeParents: true,
+  });
 
+  let visualBt = $('.control-bt');
+  visualBt.click(function(){
+    let temp = visualBt.hasClass('pause');
+    if(temp == true){
+      swVisual.autoplay.stop();
+      visualBt.removeClass('pause').addClass('play').text('play_arrow');
+    }else {
+      swVisual.autoplay.start();
+      visualBt.removeClass('play').addClass('pause').text('pause');
+    }
+  })
+
+  // value count up
+  function valueCounter() {
+    $('.g-value').each(function () {
+      let gvDC = $(this);
+      let countTo = gvDC.attr('data-count');
+      $({countNum: (countTo - 100) < 0 ? 0 : (countTo - 100)}).animate({ 
+        countNum: countTo },
+        { duration: 1000,
+          easing: 'linear',
+          step: function () {
+            gvDC.text(Math.floor(this.countNum));
+          },
+          complete: function () {
+            gvDC.text(this.countNum);
+          }
+          }
+      );
+    });
+  };
+  valueCounter();
+});
 
 window.onload = function(){
   
