@@ -92,11 +92,33 @@ $(document).ready(function(){
           complete: function () {
             gvDC.text(this.countNum);
           }
-          }
+        }
       );
     });
   };
   valueCounter();
+
+  // news-slide
+  let newsSwiper = new Swiper('.sw-news',{
+    slidesPerView: 3,
+    spaceBetween: 30,
+    navigation:{
+      nextEl: ".news-next",
+      prevEl: ".news-prev",
+    },
+    pagination:{
+      el:'.news-fraction',
+      type:'fraction'
+    }
+  });
+
+
+
+  // footer - related box
+  let fSite = $('.related-site');
+  fSite.click(function(){
+    $(this).find('.related-list').toggle();
+  })
 });
 
 window.onload = function(){
