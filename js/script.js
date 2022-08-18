@@ -1,37 +1,4 @@
 $(document).ready(function () {
-  // header mouse enter event
-  let headerWrap = $('.header-wrap');
-  let headerHeight = 140;
-  let logo = $('.logo > a');
-  let gnb = $('.gnb');
-  let depth2 = $('.depth2');
-  let utillLang = $('.lang');
-  let siteMapbt = $('.site-map');
-
-  let headerActive = headerHeight + 250;
-  gnb.mouseenter(function () {
-    headerWrap.addClass('active').css('height', headerActive);
-    logo.addClass('active');
-    depth2.css('visibility', 'visible');
-    utillLang.addClass('active');
-    siteMapbt.addClass('active');
-  });
-  gnb.mouseleave(function () {
-    headerWrap.removeClass('active').css('height', headerHeight);
-    logo.removeClass('active');
-    depth2.css('visibility', 'hidden');
-    utillLang.removeClass('active');
-    siteMapbt.removeClass('active');
-  });
-
-  // header languge event
-  let languge = $(utillLang).find('li');
-  languge.click(function (event) {
-    event.preventDefault();
-    languge.removeClass('active');
-    $(this).addClass('active');
-  });
-
   // visual slide
   let swVisual = new Swiper(".sw-visual", {
     loop: true,
@@ -77,28 +44,7 @@ $(document).ready(function () {
     }
   })
 
-  // value count up
-  function valueCounter() {
-    $('.g-value').each(function () {
-      let gvDC = $(this);
-      let countTo = gvDC.attr('data-count');
-      $({
-        countNum: (countTo - 100) < 0 ? 0 : (countTo - 100)
-      }).animate({
-        countNum: countTo
-      }, {
-        duration: 1000,
-        easing: 'linear',
-        step: function () {
-          gvDC.text(Math.floor(this.countNum));
-        },
-        complete: function () {
-          gvDC.text(this.countNum);
-        }
-      });
-    });
-  };
-  valueCounter();
+
 
   // news-slide
   let newsSwiper = new Swiper('.sw-news', {
@@ -152,6 +98,19 @@ window.onload = function () {
     if (e.originalEvent.deltaY > 0) {
       lSideBt.removeClass('on');
       lSideBt.eq(page).addClass('on');
+      if (page == 2) {
+        valueCounter();
+        logo.addClass('active');
+        mainMenu.addClass('active');
+        utillLang.addClass('active');
+        siteMapbt.addClass('active');
+      }
+      if (page == 3) {
+        logo.removeClass('active');
+        mainMenu.removeClass('active');
+        utillLang.removeClass('active');
+        siteMapbt.removeClass('active');
+      }
       if (page == 4) {
         sideBar.hide();
       }
@@ -164,8 +123,24 @@ window.onload = function () {
       lSideBt.eq(page - 2).addClass('on');
       if (page == 5) {
         sideBar.show();
+      } 
+      if (page == 4) {
+        valueCounter();
+        logo.addClass('active');
+        mainMenu.addClass('active');
+        utillLang.addClass('active');
+        siteMapbt.addClass('active');
       }
-      if (page == 1) return;
+      if (page == 3) {
+        logo.removeClass('active');
+        mainMenu.removeClass('active');
+        utillLang.removeClass('active');
+        siteMapbt.removeClass('active');
+      }
+      if (page == 1) {
+
+        return;
+      }
       page--;
     }
     let posTop = (page - 1) * $(window).height();
@@ -173,4 +148,59 @@ window.onload = function () {
       scrollTop: posTop
     }, 800);
   });
+  // header mouse enter event
+  let headerWrap = $('.header-wrap');
+  let headerHeight = 140;
+  let logo = $('.logo > a');
+  let gnb = $('.gnb');
+  let mainMenu = $('.depth1 > li > a');
+  let depth2 = $('.depth2');
+  let utillLang = $('.lang');
+  let siteMapbt = $('.site-map');
+
+  let headerActive = headerHeight + 250;
+  gnb.mouseenter(function () {
+    headerWrap.addClass('active').css('height', headerActive);
+    logo.addClass('active');
+    depth2.css('visibility', 'visible');
+    utillLang.addClass('active');
+    siteMapbt.addClass('active');
+  });
+  gnb.mouseleave(function () {
+    headerWrap.removeClass('active').css('height', headerHeight);
+    logo.removeClass('active');
+    depth2.css('visibility', 'hidden');
+    utillLang.removeClass('active');
+    siteMapbt.removeClass('active');
+  });
+
+  // header languge event
+  let languge = $(utillLang).find('li');
+  languge.click(function (event) {
+    event.preventDefault();
+    languge.removeClass('active');
+    $(this).addClass('active');
+  });
+  // value count up
+  function valueCounter() {
+    $('.g-value').each(function () {
+      let gvDC = $(this);
+      let countTo = gvDC.attr('data-count');
+      $({
+        countNum: (countTo - 100) < 0 ? 0 : (countTo - 100)
+      }).animate({
+        countNum: countTo
+      }, {
+        duration: 1000,
+        easing: 'linear',
+        step: function () {
+          gvDC.text(Math.floor(this.countNum));
+        },
+        complete: function () {
+          gvDC.text(this.countNum);
+        }
+      });
+    });
+  };
+
 };
