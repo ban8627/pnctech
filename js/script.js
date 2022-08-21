@@ -87,7 +87,7 @@ window.onload = function () {
   let pncHtml = $("html");
   let page = 1;
   let lSideBt = $('.l-side-bar').find('a');
-  let sideBar = $('.side-bar');
+  const sideBar = $('.side-bar');
 
   pncHtml.animate({
     scrollTop: 0
@@ -203,4 +203,18 @@ window.onload = function () {
     });
   };
 
+  window.onresize = (event)=>{
+    let winWidth = window.innerWidth;
+  if(winWidth <= 2000){
+    
+  } else if( winWidth <= 1300 ) {
+    sideBar.hide();
+
+  } else if ( winWidth <= 800 ) {
+
+  } else if ( winWidth <= 480) {
+
+  }
+}
+;
 };
