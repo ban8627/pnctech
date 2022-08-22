@@ -491,11 +491,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* left:50%;
+  left:50%;
   top:50%;
-  transform: translate(-42%, -25%); */
+  transform: translate(-42%, -25%);
   height:16px;
-  border:1px solid #fff;
 }
 .swiper-pagination-bullet {
   position: relative;
