@@ -1,3 +1,5 @@
+  <link rel="stylesheet" href="modal/modalstyle.css">
+  <script src="modal/modalscript.js"></script>
     <div class="modal-wrap">
       <div class="modal-main">
         <h1><strong>본 사이트는 개인 포트폴리오용으로 제작되었습니다.</strong></h1>
